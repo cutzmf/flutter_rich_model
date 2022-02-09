@@ -6,7 +6,7 @@ import 'common/common.dart';
 
 void main() {
   final repo = BallDummyRepo();
-  final reloadableBallModel = ReloadableModelNotifier<AsyncBallState>(repo.get);
+  final reloadableBallModel = ReloadableModelNotifier<AsyncBallViewModel>(repo.get);
 
   runApp(
     MaterialApp(

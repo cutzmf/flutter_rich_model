@@ -6,7 +6,7 @@ import 'model.dart';
 class BallKickScreen extends StatelessWidget {
   const BallKickScreen(this.reloadableModel, {Key? key}) : super(key: key);
 
-  final ReloadableModel<AsyncBallState> reloadableModel;
+  final ReloadableModel<AsyncBallViewModel> reloadableModel;
 
   @override
   Widget build(BuildContext context) {
@@ -21,10 +21,10 @@ class BallKickScreen extends StatelessWidget {
             SliverFillViewport(
               delegate: SliverChildBuilderDelegate(
                 (context, _) {
-                  return ValueListenableBuilder<Future<AsyncBallState>>(
+                  return ValueListenableBuilder<Future<AsyncBallViewModel>>(
                     valueListenable: reloadableModel,
                     builder: (context, futureBall, _) {
-                      return FutureBuilder<AsyncBallState>(
+                      return FutureBuilder<AsyncBallViewModel>(
                         future: futureBall,
                         builder: (context, snapshot) {
                           if (snapshot.hasData) {
@@ -74,7 +74,7 @@ class BallKickScreen extends StatelessWidget {
 class _KickButton extends StatelessWidget {
   const _KickButton(this.ball, {Key? key}) : super(key: key);
 
-  final AsyncBallState ball;
+  final AsyncBallViewModel ball;
 
   @override
   Widget build(BuildContext context) {

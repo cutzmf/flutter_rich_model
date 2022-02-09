@@ -12,16 +12,16 @@ class BallDummyRepo implements BallRepo {
   int _count = 0;
 
   @override
-  Future<AsyncBallState> get() async {
+  Future<AsyncBallViewModel> get() async {
     _count++;
     await Future.delayed(const Duration(seconds: 3));
     // if (_count.isOdd) throw Exception('$runtimeType dummy error');
-    return AsyncBallState(_HttpBall(_count, _httpClient));
+    return _OptimisticHttpBall(AsyncBallViewModel(_HttpBall(_count, _httpClient)));
   }
 }
 
-class _OptimisticHttpBall implements AsyncBallState {
-  final AsyncBallState _asyncBall;
+class _OptimisticHttpBall implements AsyncBallViewModel {
+  final AsyncBallViewModel _asyncBall;
 
   _OptimisticHttpBall(this._asyncBall);
 

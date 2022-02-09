@@ -9,11 +9,11 @@ abstract class AsyncBall implements Ball {
   Future<void> kick();
 }
 
-class AsyncBallState implements AsyncBall {
+class AsyncBallViewModel implements AsyncBall {
   final AsyncBall _asyncBall;
   final _c = StreamController<AsyncBall>.broadcast();
 
-  AsyncBallState(this._asyncBall);
+  AsyncBallViewModel(this._asyncBall);
 
   bool get isKicking => _isKicking;
   bool _isKicking = false;
